@@ -42,27 +42,27 @@ export class App extends Component {
 
   componentDidMount() {
     const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.psrse('contacts');
-    if(parsedContacts) {
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
     }
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.contacts !== prevState.contacts) {
+
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   };
-   
 
   render() {
     const visiblContacts = this.getVisibleContacts();
 
     return (
       <ContainerForm>
-        <h1 style={{ padding: "10px 20px", textAlign: "center", color: "Black"}}>Phonebook</h1>
+        <h1>Phonebook</h1>
         <Forma onSubmit={this.addContacts} arr={this.state.contacts} />
-        <h2 style={{ padding: "10px 20px", textAlign: "center", color: "Black"}}>Contacts</h2>
+        <h2>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
         <Contacts
           contacts={visiblContacts}
@@ -72,4 +72,3 @@ export class App extends Component {
     );
   }
 };
-
