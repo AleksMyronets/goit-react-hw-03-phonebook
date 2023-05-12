@@ -5,6 +5,7 @@ import { Forma } from '../Forma';
 import { nanoid } from 'nanoid';
 import { ContainerForm } from "./App.styled"
 
+
 export class App extends Component {
   state = {
     contacts: [],
@@ -39,6 +40,26 @@ export class App extends Component {
     )
   };
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.psrse('contacts');
+    if(parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  };
+   
+  render() {
+    const visiblContacts = this.getVisibleContacts();
+  }
+  
+
+
   render() {
     const visiblContacts = this.getVisibleContacts();
 
@@ -55,5 +76,5 @@ export class App extends Component {
       </ContainerForm>
     );
   }
-}
+};
 
