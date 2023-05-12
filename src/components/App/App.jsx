@@ -60,9 +60,9 @@ export class App extends Component {
 
     return (
       <ContainerForm>
-        <h1>Phonebook</h1>
+        <h1 style={{ padding: "10px 20px", textAlign: "center", color: "Black"}}>Phonebook</h1>
         <Forma onSubmit={this.addContacts} arr={this.state.contacts} />
-        <h2>Contacts</h2>
+        <h2 style={{ padding: "10px 20px", textAlign: "center", color: "Black"}}>Contacts</h2>
         <Filter value={this.state.filter} onChange={this.changeFilter} />
         <Contacts
           contacts={visiblContacts}
