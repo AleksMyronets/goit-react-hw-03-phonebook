@@ -54,11 +54,6 @@ export class App extends Component {
     }
   };
    
-  render() {
-    const visiblContacts = this.getVisibleContacts();
-  }
-  
-
 
   render() {
     const visiblContacts = this.getVisibleContacts();
